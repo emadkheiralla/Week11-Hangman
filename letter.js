@@ -1,10 +1,15 @@
-var Letter = function(let) {
-	//make a charac property and set it to what you think makes second_instructor_demonstration
+function Letter(char) {
+    this.guessedCorrectly = false;
+    this.character = char;
+}
 
-	//make an appear property and set it to what makes sense
-
-	//make a letterRender property and set it to a function that does what you think makes sense
-
+Letter.prototype.display = function() {
+    if (this.guessedCorrectly == true) {
+        return this.character;
+    } else {
+        return '_';
+    }
 };
 
-//export the Letter constructor here
+// export letter constructor
+module.exports = Letter;
