@@ -5,11 +5,10 @@ function Letter(char) {
 
 Letter.prototype.display = function() {
     if (this.guessedCorrectly == true) {
-        return this.character;
+        return this.character + " ";
     } else {
-        return '_';
+        return '_ ';
     }
 };
 
-// export letter constructor
 module.exports = Letter;
