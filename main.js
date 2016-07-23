@@ -1,6 +1,5 @@
 var prompt = require('prompt');
 var Word = require('./word.js');
-var Letter = require('./letter.js');
 
 prompt.start();
 
@@ -34,20 +33,19 @@ game = {
 
 		prompt.get(['guessLetter'], function(err, result) {
 		    // result is an object like this: { guessLetter: 'f' }
-		    var guessedLetter = new Letter(result.guessLetter);
-		    console.log('You guessed: ' + guessedLetter.character);
+		    var guessedLetter = result.guessLetter;
+		    console.log('You guessed: ' + guessedLetter);
 
 		    //this checks if the letter was found and if it is then it sets that specific letter in the word to be found
-		    var guessedCorrectly = self.currentWrd.checkIfLetterFound(guessedLetter.character);
+		    var guessedCorrectly = self.currentWrd.checkIfLetterFound(guessedLetter);
 
 		    //if the user guessed incorrectly minus the number of guesses they have left
 		    if (guessedCorrectly == 0){
-		    	console.log(guessedLetter.character + ' is not in the word!');
+		    	console.log(guessedLetter + ' is not in the word!');
 		    	console.log("Please try again!");
 		    	self.guessesRemaining--;
 		    }else{
-		    	console.log(guessedLetter.character + ' is in the word!');
-		    	guessedLetter.guessedCorrectly = true;
+		    	console.log(guessedLetter + ' is in the word!');
 
 		    	//check if you win only when you are right
 	    		if(self.currentWrd.didWeFindTheWord()){
